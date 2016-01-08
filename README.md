@@ -30,18 +30,18 @@ POST Request parameter
 - city
 - action = saveUser
 ```
-http://swiftintern.com/teacher/settings.json
+http://cloudeducate.com/teacher/settings.json
 ```
 
 ### Manage Courses ###
 
 ```
-http://swiftintern.com/teacher/courses.json
+http://cloudeducate.com/teacher/courses.json
 ```
 
 ### Manage Assignment ###
 ```
-http://swiftintern.com/assignments/manage.json
+http://cloudeducate.com/assignments/manage.json
 ```
 
 ### Create Assignment ###
@@ -50,5 +50,5 @@ POST Request parameter
 - description
 - deadline (YYYY-MM-DD)
 ```
-http://swiftintern.com/assignments/create/{$course_id}/{$classroom_id}.json
+http://cloudeducate.com/assignments/create/{$course_id}/{$classroom_id}.json
 ```
