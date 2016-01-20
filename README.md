@@ -9,13 +9,27 @@ Teacher app for school
  
 ## API Request URL ##
 ### Login ###
-POST Request parameter
+POST Request: 
+
+#### Headers ####
+- X-Teacher-App: true
+
+#### Parameters ####
 - username
 - password
 - action: 'logmein'
+
+On successful request you will receive json data 
 ```
 http://cloudeducate.com/auth/login.json
 ```
+
+### After Login ###
+Foreach Request send the headers
+- X-App: teacher
+- X-Access-Token: {$token_stored}
+
+To get successful response 
 
 ### Get Complete Profile (after login) ###
 ```
@@ -23,18 +37,13 @@ http://cloudeducate.com/teacher/profile.json
 ```
 
 ### Update Profile ###
-POST Request parameter
-- name
-- phone
-- address
-- city
+POST Request parameters
 - action = saveUser
 ```
 http://cloudeducate.com/teacher/settings.json
 ```
 
 ### Manage Courses ###
-
 ```
 http://cloudeducate.com/teacher/courses.json
 ```
@@ -51,4 +60,17 @@ POST Request parameter
 - deadline (YYYY-MM-DD)
 ```
 http://cloudeducate.com/assignments/create/{$course_id}/{$classroom_id}.json
+```
+
+### Manage Attendance ###
+Send GET request to see the response
+- If attendance already saved for the day 'message' key will be already set
+
+POST Request parameters
+- user_id[]: Array
+- presence[]: Array, each element 1: present, 0: absent
+
+On successfully submission 'message' key will be set
+```
+http://cloudeducate.com/teacher/manageAttendance.json
 ```
