@@ -49,8 +49,9 @@ http://cloudeducate.com/teacher/courses.json
 ```
 
 ### Manage Assignment ###
+- $course_id (optional) argument. If not given then all assignments will be displayed
 ```
-http://cloudeducate.com/assignments/manage.json
+http://cloudeducate.com/assignments/manage/{$course_id}.json
 ```
 
 ### Create Assignment ###
@@ -58,6 +59,7 @@ POST Request parameter
 - title
 - description
 - deadline (YYYY-MM-DD)
+- action: assignment
 ```
 http://cloudeducate.com/assignments/create/{$course_id}/{$classroom_id}.json
 ```
@@ -69,6 +71,7 @@ Send GET request to see the response
 POST Request parameters
 - user_id[]: Array
 - presence[]: Array, each element 1: present, 0: absent
+- action: saveAttendance
 
 On successfully submission 'message' key will be set
 ```
