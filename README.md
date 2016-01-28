@@ -48,20 +48,33 @@ http://cloudeducate.com/teacher/settings.json
 http://cloudeducate.com/teacher/courses.json
 ```
 
-### Manage Assignment ###
-- $course_id (optional) argument. If not given then all assignments will be displayed
-```
-http://cloudeducate.com/assignments/manage/{$course_id}.json
-```
-
 ### Create Assignment ###
 POST Request parameter
 - title
 - description
 - deadline (YYYY-MM-DD)
 - action: assignment
+- attachment: send attachment in this key
 ```
 http://cloudeducate.com/assignments/create/{$course_id}/{$classroom_id}.json
+```
+
+### Manage Assignment ###
+- $course_id (optional) argument. If not given then all assignments will be displayed
+```
+http://cloudeducate.com/assignments/manage/{$course_id}.json
+```
+
+### Grade Assignment ###
+Send a POST Request
+- grade: On a scale of 1 to 5 with 5 being best
+- remarks: Remarks about the submission of student (optional)
+- action: 'saveMarks'
+
+Params:
+- $submission_id
+```
+http://cloudeducate.com/assignments/gradeIt/{$submission_id}.json
 ```
 
 ### Manage Attendance ###
