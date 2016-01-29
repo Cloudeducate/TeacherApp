@@ -21,7 +21,7 @@ POST Request:
 
 On successful request you will receive json data 
 ```
-http://cloudeducate.com/auth/login.json
+/auth/login.json
 ```
 
 ### After Login ###
@@ -33,19 +33,19 @@ To get successful response
 
 ### Get Complete Profile (after login) ###
 ```
-http://cloudeducate.com/teacher/profile.json
+/teacher/profile.json
 ```
 
 ### Update Profile ###
 POST Request parameters
 - action = saveUser
 ```
-http://cloudeducate.com/teacher/settings.json
+/teacher/settings.json
 ```
 
 ### Manage Courses ###
 ```
-http://cloudeducate.com/teacher/courses.json
+/teacher/courses.json
 ```
 
 ### Create Assignment ###
@@ -56,13 +56,20 @@ POST Request parameter
 - action: assignment
 - attachment: send attachment in this key
 ```
-http://cloudeducate.com/assignments/create/{$course_id}/{$classroom_id}.json
+/assignments/create/{$course_id}/{$classroom_id}.json
 ```
 
 ### Manage Assignment ###
 - $course_id (optional) argument. If not given then all assignments will be displayed
 ```
-http://cloudeducate.com/assignments/manage/{$course_id}.json
+/assignments/manage/{$course_id}.json
+```
+
+### Assignment Submissions ###
+This API will be the submissions for the assignment
+- $assignment_id (required): id of the assignment
+```
+/assignments/submissions/{$assignment_id}.json
 ```
 
 ### Grade Assignment ###
@@ -74,7 +81,7 @@ Send a POST Request
 Params:
 - $submission_id
 ```
-http://cloudeducate.com/assignments/gradeIt/{$submission_id}.json
+/assignments/gradeIt/{$submission_id}.json
 ```
 
 ### Manage Attendance ###
@@ -88,5 +95,21 @@ POST Request parameters
 
 On successfully submission 'message' key will be set
 ```
-http://cloudeducate.com/teacher/manageAttendance.json
+/teacher/manageAttendance.json
+```
+
+### Weekly Performance ###
+This API will allow the teacher to give weekly score to students based on their performance
+
+Send a GET request to see the response
+- $course_id: (required) If not given then automatically selects the course
+
+POST Request parameters
+- user_id[]: Array
+- grade[]: Array [Accepted values: 1-10] 10 being best scale
+- action: 'grade'
+
+On successfully submission 'message' key will be set
+```
+/teacher/weeklyStudentsPerf/{$course_id}.json
 ```
