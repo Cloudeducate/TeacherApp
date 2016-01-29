@@ -151,6 +151,7 @@ public class LoginActivity extends AppCompatActivity {
                 // Creating JSONArray from JSONObject
                 JSONObject jsonmeta = jsonObjMain.getJSONObject(Constants.META);
                 String metavalue = jsonmeta.getString(Constants.METAVALUE);
+                Log.v(TAG,metavalue+"metavalue in login");
                 if (metavalue != null) {
                     Bundle json = new Bundle();
                     json.putString(Constants.KEY, jsonString);
