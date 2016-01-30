@@ -1,6 +1,8 @@
 package com.cloudeducate.redtick.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,12 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.cloudeducate.redtick.R;
+import com.cloudeducate.redtick.Utils.Constants;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final String TAG = "teach";
     String jsonData;
+    SharedPreferences sharedpref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +114,18 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_profile) {
             Intent profile=new Intent(this,Profile.class);
             startActivity(profile);
+
+        }
+        else if (id == R.id.nav_logout) {
+
+            sharedpref = this.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedpref.edit();
+            editor.clear();
+            editor.commit();
+            moveTaskToBack(true);
+            MainActivity.this.finish();
+            Intent login=new Intent(this,LoginActivity.class);
+            startActivity(login);
 
         }
 

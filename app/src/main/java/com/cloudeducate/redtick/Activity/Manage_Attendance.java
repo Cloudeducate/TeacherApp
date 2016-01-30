@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.android.volley.AuthFailureError;
@@ -56,6 +57,9 @@ public class Manage_Attendance extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private AttendanceAdapter attendanceAdapter;
     private final String TAG = "MyApp";
+    Button submit;
+    JSONObject user_json,presence_json;
+    String[] userid_array,presence_array;
 
 
     @Override
@@ -72,7 +76,13 @@ public class Manage_Attendance extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.rvattendance);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(Manage_Attendance.this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);
-
+        submit=(Button)findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submittask();
+            }
+        });
 
         attendancetask();
 
@@ -178,6 +188,83 @@ public class Manage_Attendance extends AppCompatActivity {
 
         return resultList;
 
+    }
+    public void submittask()
+    {
+        Log.v(TAG, "fetchData is called");
+        volleySingleton = VolleySingleton.getMyInstance();
+        requestQueue = volleySingleton.getRequestQueue();
+         user_json=new JSONObject();
+        presence_json=new JSONObject();
+        for (int i = 0; i < list.size(); i++) {
+
+            Attendance_model attendance_model=new Attendance_model();
+
+            // Creating JSONObject from JSONArray
+            attendance_model=list.get(i);
+            String userid=attendance_model.getuserid();
+            int valueofpresence=attendance_model.getAttendancevalue();
+            String presence=Integer.toString(valueofpresence);
+            try {
+                user_json.put("user_id "+i,userid);
+                presence_json.put("presence "+i,presence);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            Log.v(TAG,user_json.toString()+"      "+presence_json.toString());
+
+
+        }
+        showProgressDialog();
+        StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, URL.getAttendanceURL(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                progressDialog.dismiss();
+                if (response == null) {
+                    Log.v(TAG, "fetchData is not giving a fuck");
+                }
+                Log.v(TAG, "response = " + response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                    Log.v(TAG, "Response = " + "timeOut");
+                } else if (error instanceof AuthFailureError) {
+                    Log.v(TAG, "Response = " + "AuthFail");
+                } else if (error instanceof ServerError) {
+                    Log.v(TAG, "Response = " + "ServerError");
+                } else if (error instanceof NetworkError) {
+                    Log.v(TAG, "Response = " + "NetworkError");
+                } else if (error instanceof ParseError) {
+                    Log.v(TAG, "Response = " + "ParseError");
+                }
+            }
+        }) {
+
+            public Map<String,String> getParams() throws com.android.volley.AuthFailureError
+            {
+                Map<String,String> params=new HashMap<String,String>();
+                params.put("action","saveAttendance");
+                params.put("user_id[]",user_json.toString());
+                params.put("presence[]",presence_json.toString());
+                return params;
+
+            }
+            @Override
+            public Map<String, String> getHeaders() throws com.android.volley.AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("X-App", "teacher");
+                params.put("X-Access-Token", metadata);
+                return params;
+            }
+
+            ;
+        };
+
+        requestQueue.add(jsonObjectRequest);
     }
 
     public void showProgressDialog() {

@@ -8,6 +8,7 @@ public class Attendance_model {
     private String user_id;
     private String roll_no;
     int attendance;
+
     public String getstudentname(){ return name;}
 
     public void setstudentname(String name){ this.name=name;}
@@ -23,4 +24,7 @@ public class Attendance_model {
     public int getAttendancevalue(){return attendance;}
 
     public void setAttendancevalue(int value){this.attendance=value;}
+
+
+
 }

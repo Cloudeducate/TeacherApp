@@ -2,6 +2,7 @@ package com.cloudeducate.redtick.Adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,12 +40,6 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.Vi
         // create a new view
         View itemLayoutView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_attendance, null);
-        Set<String> val = new HashSet<String>();
-        val.add("Present");
-        val.add("Absent");
-       adapter = new ArrayAdapter(context,
-                android.R.layout.simple_spinner_item, val.toArray());
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // create ViewHolder
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
@@ -52,31 +47,40 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.studentname.setText(list.get(position).getstudentname());
         holder.rollnoview.setText("Rollno." + list.get(position).getrollno());
-        if(list.get(position).getAttendancevalue()==1)
+        Log.v("MyApp",Integer.toString(list.get(position).getAttendancevalue()));
+        if(list.get(position).getAttendancevalue()==0)
         {
-            Set<String> val = new HashSet<String>();
-            val.add("Absent");
-            val.add("Present");
+          String value[]=new String[]{"Absent","Present"};
+
+            Log.v("MyApp", "Absent   "+value);
             adapter1 = new ArrayAdapter(context,
-                    android.R.layout.simple_spinner_item, val.toArray());
+                    android.R.layout.simple_spinner_item, value);
             adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
             holder.spinner.setAdapter(adapter1);
+
         }
-           else {
+           else if(list.get(position).getAttendancevalue()==1) {
+            String val[]=new String[]{"Present","Absent"};
+            Log.v("MyApp", "Present    "+val);
+            adapter = new ArrayAdapter(context,
+                    android.R.layout.simple_spinner_item, val);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             holder.spinner.setAdapter(adapter);
         }
         holder.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 Attendance_model attendance= list.get(position);
-                if(pos==0)
-                    attendance.setAttendancevalue(1);
-                else
-                attendance.setAttendancevalue(0);
+                if(pos==1) {
+                    int value = attendance.getAttendancevalue();
+                    if (value == 1) attendance.setAttendancevalue(0);
+                    else attendance.setAttendancevalue(1);
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {

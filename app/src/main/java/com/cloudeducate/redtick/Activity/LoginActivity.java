@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText username, password;
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
+    private SharedPreferences sharedpref;
     private ProgressDialog progressDialog;
     private AlertDialog alertDialog;
     private Button login;
@@ -87,6 +88,27 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onResume(){
+        sharedpref = this.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+        if(sharedpref.contains(Constants.USERNNAME))
+        {
+            if (sharedpref.contains(Constants.PASSWORD)) {
+                Intent dashboard = new Intent(this, MainActivity.class);
+                startActivity(dashboard);
+            }
+
+        }
+        super.onResume();
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if ((progressDialog != null) && progressDialog.isShowing())
+            progressDialog.dismiss();
+        progressDialog = null;
+    }
 
     private void loginRequest() {
         Log.v(TAG, "fetchData is called");
@@ -96,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
         StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, URL.getTeacherLoginURL(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
                 if (response == null) {
                     Log.v(TAG, "fetchData is not giving a fuck");
                 }
@@ -156,8 +178,10 @@ public class LoginActivity extends AppCompatActivity {
                     Bundle json = new Bundle();
                     json.putString(Constants.KEY, jsonString);
 
-                    SharedPreferences sharedpref = this.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+                   sharedpref = this.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedpref.edit();
+                    editor.putString(Constants.USERNNAME,usernameWrapper.getEditText().getText().toString());
+                    editor.putString(Constants.PASSWORD, passwordWrapper.getEditText().getText().toString());
                     editor.putString(Constants.METAKEY, metavalue);
                     editor.commit();
 
