@@ -34,7 +34,7 @@ import com.cloudeducate.redtick.Adapters.AssignmentRecyclerviewAdapter;
 import com.cloudeducate.redtick.Model.Assignment_model;
 import com.cloudeducate.redtick.R;
 import com.cloudeducate.redtick.Utils.Constants;
-import com.cloudeducate.redtick.Utils.URL;
+import com.cloudeducate.redtick.Utils.URL1;
 import com.cloudeducate.redtick.Volley.VolleySingleton;
 
 import org.json.JSONArray;
@@ -132,7 +132,7 @@ public class Assignment extends AppCompatActivity {
         if (course_id == null) {
             course_id = "1";
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL.getAssignmentURL("1"), new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL1.getAssignmentURL("1"), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if (response.toString() == null) {

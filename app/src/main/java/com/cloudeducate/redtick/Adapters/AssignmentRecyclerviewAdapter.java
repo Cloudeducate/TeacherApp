@@ -4,8 +4,6 @@ import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
-import android.os.Environment;
-import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,10 +14,6 @@ import android.widget.TextView;
 
 import com.cloudeducate.redtick.Model.Assignment_model;
 import com.cloudeducate.redtick.R;
-import com.cloudeducate.redtick.Utils.Constants;
-import com.cloudeducate.redtick.Utils.URL;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
