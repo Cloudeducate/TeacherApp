@@ -113,3 +113,47 @@ On successfully submission 'message' key will be set
 ```
 /teacher/weeklyStudentsPerf/{$course_id}.json
 ```
+
+### Conversation Create ###
+Send a GET request to see the response
+- Will be given a array of objects containing info about students
+
+POST Request parameters
+- display: Name that will be displayed on conversation
+- identifier: Username of the student
+- user_id: User_id of the student
+- action: 'newConv'
+```
+/conversation/create.json
+```
+
+On successfully submission you will be redirected to this url
+```
+/conversation/view/{$conversation_id}.json
+```
+
+### Viewing Active Conversations ###
+Send a GET Request to see the response
+- conversations: This key will contain different conversation
+
+```
+/conversation/all.json
+```
+
+### Viewing Specific conversation ###
+Here different keys will be set
+- users: Users in the conversation
+- conversation: Info about conversation
+- messages: Messages in the conversation
+```
+/conversation/view/{$conversation_id}.json
+```
+
+### Message in the conversation ###
+Send a POST request with
+- action: sendMessage
+- message: Message user want to send in the conversation
+
+```
+/conversation/message/{$conversation_id}.json
+```
