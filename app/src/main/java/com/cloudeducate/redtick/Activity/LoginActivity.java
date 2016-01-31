@@ -30,7 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.cloudeducate.redtick.R;
 import com.cloudeducate.redtick.Utils.Constants;
-import com.cloudeducate.redtick.Utils.URL;
+import com.cloudeducate.redtick.Utils.URL1;
 import com.cloudeducate.redtick.Volley.VolleySingleton;
 
 import org.json.JSONException;
@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
         volleySingleton = VolleySingleton.getMyInstance();
         requestQueue = volleySingleton.getRequestQueue();
         showProgressDialog();
-        StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, URL.getTeacherLoginURL(), new Response.Listener<String>() {
+        StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, URL1.getTeacherLoginURL(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                // progressDialog.dismiss();
