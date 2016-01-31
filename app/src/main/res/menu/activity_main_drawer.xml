@@ -3,34 +3,44 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_attendance"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Manage Attendance" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_messages"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Messages" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_performance"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Student Weekly Performance" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_assignment"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Assignments" />
+        <item
+            android:id="@+id/nav_classes"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Available Classes" />
+
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Personal">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_profile"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="Profile" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_feedback"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Feedback" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Logout" />
         </menu>
+
     </item>
 
 </menu>
