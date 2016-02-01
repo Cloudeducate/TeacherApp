@@ -102,7 +102,9 @@ On successfully submission 'message' key will be set
 This API will allow the teacher to give weekly score to students based on their performance
 
 Send a GET request to see the response
-- $course_id: (required) If not given then automatically selects the course
+- $course_id: (required)
+- $classroom_id: (required)
+These values can be fetched from the /courses API
 
 POST Request parameters
 - user_id[]: Array
@@ -111,7 +113,7 @@ POST Request parameters
 
 On successfully submission 'message' key will be set
 ```
-/teacher/weeklyStudentsPerf/{$course_id}.json
+/teacher/weeklyStudentsPerf/{$course_id}/{$classroom_id}.json
 ```
 
 ### Conversation Create ###
