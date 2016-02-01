@@ -73,15 +73,21 @@ This API will be the submissions for the assignment
 ```
 
 ### Grade Assignment ###
+Send a GET request to see the response
+- students: This key will contain the list of students with their user_id's and grades
+- message: If already graded this key will be set
+
 Send a POST Request
-- grade: On a scale of 1 to 5 with 5 being best
-- remarks: Remarks about the submission of student (optional)
+- grade[]: On a scale of 1 to 5 with 5 being best (required)
+- remarks[]: Remarks about the submission of student (optional)
+- user_id[]: User id of the student to be graded (required)
 - action: 'saveMarks'
+On Successful submission 'message' key will be set
 
 Params:
-- $submission_id
+- $assignment_id
 ```
-/assignments/gradeIt/{$submission_id}.json
+/assignments/gradeIt/{$assignment_id}.json
 ```
 
 ### Manage Attendance ###
