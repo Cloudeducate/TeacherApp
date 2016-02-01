@@ -3,22 +3,15 @@ package com.cloudeducate.redtick.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -40,12 +33,9 @@ import com.cloudeducate.redtick.Utils.Constants;
 import com.cloudeducate.redtick.Utils.URL1;
 import com.cloudeducate.redtick.Volley.VolleySingleton;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -57,15 +47,10 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
-import java.util.Set;
 
 public class Manage_Attendance extends AppCompatActivity {
 
@@ -79,7 +64,7 @@ public class Manage_Attendance extends AppCompatActivity {
     private AttendanceAdapter attendanceAdapter;
     private final String TAG = "MyApp";
     Button submit;
-    JSONObject user_json,presence_json;
+   String message,classsupdated;
     String[] userid_array=null;
     String[] presence_array=null;
 
@@ -107,16 +92,6 @@ public class Manage_Attendance extends AppCompatActivity {
         });
 
         attendancetask();
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
     }
 
     void attendancetask()
@@ -191,12 +166,14 @@ public class Manage_Attendance extends AppCompatActivity {
                     attendance_model.setstudentname(jsonObject.getString(Constants.NAME));
                     attendance_model.setrollno(jsonObject.getString(Constants.ROLLNO));
                     attendance_model.setuserid(jsonObject.getString(Constants.USER_ID));
-                    if(jsonObject.getString(Constants.PRESENCE)==null)
+                    Log.v(TAG, "value of attendance presence" + jsonObject.getString(Constants.PRESENCE));
+                    if(jsonObject.getString(Constants.PRESENCE)=="null") {
                         attendance_model.setAttendancevalue(1);
-                    else
-                        attendance_model.setAttendancevalue(jsonObject.getInt(Constants.PRESENCE));
-
-
+                        Log.v(TAG,"go in null case");
+                    }
+                    else {
+                        attendance_model.setAttendancevalue(Integer.parseInt(jsonObject.getString(Constants.PRESENCE)));
+                    }
                     Log.v(TAG, "test = " + String.valueOf(jsonObject.getString(Constants.NAME)));
 
                     resultList.add(attendance_model);
@@ -223,10 +200,10 @@ public class Manage_Attendance extends AppCompatActivity {
     }
     public void submittask() {
 
-
-        userid_array = new String[list.size()];
-        presence_array = new String[list.size()];
-        for (int i = 0; i < list.size(); i++) {
+        int size=list.size();
+        userid_array = new String[size];
+        presence_array = new String[size];
+        for (int i = 0; i < size; i++) {
 
             Attendance_model attendance_model = new Attendance_model();
 
@@ -240,9 +217,11 @@ public class Manage_Attendance extends AppCompatActivity {
             userid_array[i] = userid;
             presence_array[i] = presence;
             Log.v(TAG, userid_array.toString() + " " + presence_array.toString());
-            Toast.makeText(this,"Submiting Attendance..",Toast.LENGTH_LONG);
+            Toast.makeText(this, "Submiting Attendance..", Toast.LENGTH_LONG);
             AttendanceTask attendancesubmit=new AttendanceTask();
             attendancesubmit.execute();
+            if(message!=null)
+                Toast.makeText(Manage_Attendance.this,message+" For Class "+classsupdated,Toast.LENGTH_LONG);
         }
     }
 
@@ -363,25 +342,12 @@ public class Manage_Attendance extends AppCompatActivity {
         protected void onPostExecute(final String success) {
             try {
                 JSONObject jsonobject=new JSONObject(success);
-                String message=jsonobject.getString("message");
-                String classsupdated=jsonobject.getString("class");
-                Toast.makeText(Manage_Attendance.this,message+" For Class "+classsupdated,Toast.LENGTH_LONG);
-
+                 message=jsonobject.getString("message");
+                classsupdated=jsonobject.getString("class");
+                //Toast.makeText(Manage_Attendance.this,message+" For Class "+classsupdated,Toast.LENGTH_LONG);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-
-
-
-
-
-
     }
-
-
-
-
-
-
 }

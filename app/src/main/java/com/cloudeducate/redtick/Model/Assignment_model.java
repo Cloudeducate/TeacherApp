@@ -13,6 +13,7 @@ public class Assignment_model {
     private Boolean submitted;
     private String filename;
 
+
     /**
      *
      * @return
@@ -130,13 +131,10 @@ public class Assignment_model {
         return filename;
     }
 
-    /**
-     *
-     * @param filename
-     * The filename
-     */
     public void setFilename(String filename) {
         this.filename = filename;
     }
+
+
 
 }

@@ -3,7 +3,9 @@ package com.cloudeducate.redtick.Adapters;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import com.cloudeducate.redtick.Activity.Assignment;
+import com.cloudeducate.redtick.Activity.Grade_Assignment;
 import com.cloudeducate.redtick.Model.Assignment_model;
 import com.cloudeducate.redtick.R;
 import java.util.ArrayList;
@@ -23,6 +27,7 @@ import java.util.List;
 public class AssignmentRecyclerviewAdapter extends RecyclerView.Adapter<AssignmentRecyclerviewAdapter.ViewHolder> {
 
     View assignmentView;
+    CardView cards;
     Context context;
     List<Assignment_model> list = new ArrayList<Assignment_model>();
 
@@ -46,12 +51,19 @@ public class AssignmentRecyclerviewAdapter extends RecyclerView.Adapter<Assignme
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.title.setText(list.get(position).getTitle());
         holder.desc.setText(list.get(position).getDescription());
         holder.deadline.setText("Deadline : " + list.get(position).getDeadline());
         holder.course.setText(list.get(position).getCourse());
+        cards.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              Intent intent=new Intent(context,Grade_Assignment.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
         //holder.filename.setText(list.get(position).getFilename());
 //
 
@@ -76,7 +88,7 @@ public class AssignmentRecyclerviewAdapter extends RecyclerView.Adapter<Assignme
             filename = (TextView) itemView.findViewById(R.id.filename);
             course = (TextView) itemView.findViewById(R.id.course);
             status = (TextView) itemView.findViewById(R.id.status);
-
+            cards=(CardView) itemView.findViewById(R.id.cardview_assignment);
         }
     }
 

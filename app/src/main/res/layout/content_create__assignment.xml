@@ -26,7 +26,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin">
+                android:layout_marginTop="60dp"
+                android:paddingTop="@dimen/activity_vertical_margin"
+              >
 
                 <EditText
                     android:id="@+id/title"
@@ -81,6 +83,7 @@
                 android:layout_marginTop="@dimen/big_margin"
                 android:background="@drawable/login_butto_selector"
                 android:text="Browse"
+                android:onClick="browse"
                 android:textColor="@color/md_white_1000" />
 
             <android.support.design.widget.TextInputLayout

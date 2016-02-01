@@ -113,7 +113,7 @@ public class Assignment extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                course_id = Integer.toString(position);
+                course_id = Integer.toString(position+1);
                 fetchData();
             }
 

@@ -34,21 +34,7 @@
                 android:layout_gravity="center_horizontal"
                 android:text="Create New Assignment"/>
 
-<!--
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select Subject"
-                android:textSize="14dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="28dp"
-                android:layout_marginLeft="@dimen/big_margin"
-                android:fontFamily="sans-serif"
-                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-                android:textColor="@color/md_white_1000"
-                android:textStyle="bold"/>
--->
 
         </LinearLayout>
 

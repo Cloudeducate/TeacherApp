@@ -13,4 +13,5 @@
     <string name="title_activity_messages">Messages</string>
     <string name="title_activity_profile">Profile</string>
     <string name="title_activity_create__assignment">Create_Assignment</string>
+    <string name="title_activity_grade__assignment">Grade_Assignment</string>
 </resources>

@@ -15,7 +15,7 @@ android:layout_height="match_parent">
     android:background="?selectableItemBackground"
     android:layout_marginTop="35dp">
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
@@ -24,15 +24,16 @@ android:layout_height="match_parent">
             android:id="@+id/rollno"
             android:layout_height="wrap_content"
             android:text="Roll no"
-            android:textSize="15sp"/>
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="25sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:id="@+id/student_name"
-            android:layout_marginLeft="10dp"
-            android:layout_below="@id/rollno"
+            android:layout_marginLeft="40dp"
             android:layout_gravity="center_horizontal"
-            android:layout_alignLeft="@+id/rollno"
-            android:textSize="25sp"
+            android:layout_toRightOf="@+id/rollno"
+            android:textSize="30sp"
             android:layout_height="wrap_content"
             android:text="Student Name"/>
 
