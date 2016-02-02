@@ -160,7 +160,8 @@ public class MainActivity extends AppCompatActivity
                     string[1]=jsonObject.getString(Constants.GRADE)+ " "+jsonObject.getString(Constants.SECTION);
                     string[2]=jsonObject.getString(Constants.CLASSROOM_ID);
                     string[3]=jsonObject.getString(Constants.COURSE_ID);
-                    Log.v(TAG, "test = " + String.valueOf(jsonObject.getString(Constants.COURSE)+String.valueOf(jsonObject.getString(Constants.GRADE))));
+
+                    Log.v(TAG, "test = " +string[3]+string[2]+ String.valueOf(jsonObject.getString(Constants.COURSE)+String.valueOf(jsonObject.getString(Constants.GRADE))));
                     resultList.add(string);
                     values.add(string[0]);
                     classroom.add(string[1]);

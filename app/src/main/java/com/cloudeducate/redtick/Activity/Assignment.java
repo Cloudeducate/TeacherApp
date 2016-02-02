@@ -116,7 +116,8 @@ public class Assignment extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-        spinner.setSelection(Integer.parseInt(course_id));
+        Log.v(TAG,"course_id will contain "+course_id);
+        spinner.setSelection(Integer.parseInt(course_id)-1);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

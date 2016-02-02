@@ -30,6 +30,7 @@ public class Courses_Adapter extends RecyclerView.Adapter<Courses_Adapter.ViewHo
     View courseView;
     Context context;
     ArrayAdapter adapter;
+    Bundle bundle;
     List<String[]> list = new ArrayList<String[]>();
 
     public Courses_Adapter(Context context, List<String[]> list) {
@@ -54,15 +55,14 @@ public class Courses_Adapter extends RecyclerView.Adapter<Courses_Adapter.ViewHo
         final String course_id,classroom_id;
         holder.subjectname.setText(list.get(position)[0]);
         holder.classroom.setText("Class " + list.get(position)[1]);
-        classroom_id=list.get(position)[3];
-        course_id=list.get(position)[2];
-        final Bundle bundle=new Bundle();
+        classroom_id=list.get(position)[2];
+        course_id=list.get(position)[3];
+        bundle=new Bundle();
         bundle.putString("course_id",course_id);
         bundle.putString("class_id",classroom_id);
         holder.assignment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
               Intent intent=new Intent(context, Assignment.class).putExtras(bundle).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

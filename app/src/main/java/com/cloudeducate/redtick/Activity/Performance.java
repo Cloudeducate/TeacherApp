@@ -75,7 +75,8 @@ public class Performance extends AppCompatActivity {
     String[] userid_array=null;
     String[] grade_array=null;
     Spinner spinnersubject,spinnerclass;
-    String course_id,classroom_id;
+    String course_id="1",classroom_id="1";
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,11 @@ public class Performance extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.rvperformance);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(Performance.this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);
+        bundle=getIntent().getExtras();
+        if(bundle!=null) {
+            course_id = bundle.getString("course_id");
+            classroom_id = bundle.getString("class_id");
+        }
 
         spinnertasks();
         submit=(Button)findViewById(R.id.submit_performance);
@@ -116,6 +122,8 @@ public class Performance extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinnersubject.setAdapter(adapter);
+        Log.v(TAG,"course_id will contain"+course_id);
+        spinnersubject.setSelection(Integer.parseInt(course_id)-1);
         spinnersubject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -139,10 +147,12 @@ public class Performance extends AppCompatActivity {
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinnerclass.setAdapter(adapter1);
+        Log.v(TAG,"classroom_id will contain "+classroom_id);
+        spinnerclass.setSelection(Integer.parseInt(classroom_id)-1);
         spinnerclass.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                classroom_id = Integer.toString(position);
+                classroom_id = Integer.toString(position+1);
                 performancetask();
             }
 
@@ -151,8 +161,7 @@ public class Performance extends AppCompatActivity {
             }
         });
     }
-    void performancetask()
-    {
+    void performancetask() {
         Log.v(TAG, "fetchData is called");
         volleySingleton = VolleySingleton.getMyInstance();
         requestQueue = volleySingleton.getRequestQueue();
@@ -273,13 +282,15 @@ public class Performance extends AppCompatActivity {
             userid_array[i] = userid;
             grade_array[i] = presence;
             Log.v(TAG, userid_array.toString() + " " + grade_array.toString());
+        }
             Toast.makeText(this, "Submiting Performance..", Toast.LENGTH_LONG).show();
+
             PerformanceTask performancesubmit=new PerformanceTask();
             performancesubmit.execute();
             if(message!=null)
                 Toast.makeText(Performance.this,message,Toast.LENGTH_LONG).show();
 
-        }
+
     }
 
     public class PerformanceTask extends AsyncTask<Void, Void, String>
@@ -295,23 +306,8 @@ public class Performance extends AppCompatActivity {
             classroom_id="1";
             course_id="1";
             mlink = "http://cloudeducate.com/teacher/weeklyStudentsPerf/"+course_id+"/"+classroom_id+".json";
-            userid_array=new String[list.size()];
-            grade_array=new String[list.size()];
-            for (int i = 0; i < list.size(); i++) {
 
-                Attendance_model attendance_model=new Attendance_model();
 
-                // Creating JSONObject from JSONArray
-                attendance_model=list.get(i);
-                String userid=attendance_model.getuserid();
-                int valueofgrade=attendance_model.getGradevalue();
-                String grade=Integer.toString(valueofgrade);
-
-                Log.v(TAG,userid+" "+grade);
-                userid_array[i]=userid;
-                grade_array[i]=grade;
-                Log.v(TAG,userid_array.toString()+" "+grade_array.toString());
-            }
         }
         @Override
         protected String doInBackground(Void... params) {
@@ -319,9 +315,7 @@ public class Performance extends AppCompatActivity {
             try
             {
                 URL url=new URL(mlink);
-                Map<String,Object> param=new LinkedHashMap<String, Object>();
                 StringBuilder postData=new StringBuilder();
-                //Iterator<String> paramiterator=param.keySet().iterator();
                 for(int i=0;i<userid_array.length;i++) {
 
                     if (postData.length() != 0)
