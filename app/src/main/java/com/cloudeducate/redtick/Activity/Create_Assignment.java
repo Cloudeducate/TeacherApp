@@ -153,11 +153,11 @@ public class Create_Assignment extends AppCompatActivity implements FileChooserD
                 postData.append(URLEncoder.encode("action", "UTF-8"));
                 postData.append('=');
                 postData.append(URLEncoder.encode("assignment","UTF-8"));
-                if(postData.length()!=0)
+               /* if(postData.length()!=0)
                     postData.append('&');
-                postData.append(URLEncoder.encode("file", "UTF-8"));
+                postData.append(URLEncoder.encode("attachment", "UTF-8"));
                 postData.append('=');
-                postData.append(URLEncoder.encode(fileName,"UTF-8"));
+                postData.append(URLEncoder.encode(fileName,"UTF-8"));*/
                 //Log.v(TAG,param.toString());
 
                 Log.v("MyApp","post url "+postData.toString());

@@ -53,12 +53,12 @@ public class Courses_Adapter extends RecyclerView.Adapter<Courses_Adapter.ViewHo
         holder.classroom.setText("Class " + list.get(position)[1]);
         classroom_id=list.get(position)[2];
         course_id=list.get(position)[3];
-        bundle=new Bundle();
-        bundle.putString("course_id",course_id);
-        bundle.putString("class_id",classroom_id);
         holder.assignment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bundle=new Bundle();
+                bundle.putString("course_id",course_id);
+                bundle.putString("class_id",classroom_id);
               Intent intent=new Intent(context, Assignment.class).putExtras(bundle).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
@@ -66,6 +66,9 @@ public class Courses_Adapter extends RecyclerView.Adapter<Courses_Adapter.ViewHo
         holder.Performance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bundle=new Bundle();
+                bundle.putString("course_id",course_id);
+                bundle.putString("class_id",classroom_id);
                 Intent intent=new Intent(context, Performance.class).putExtras(bundle).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

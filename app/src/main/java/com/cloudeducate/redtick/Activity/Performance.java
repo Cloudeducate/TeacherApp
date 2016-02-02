@@ -104,10 +104,9 @@ public class Performance extends AppCompatActivity {
             }
         });
 
-        performancetask();
     }
-    void spinnertasks(){
-        spinnersubject=(Spinner)findViewById(R.id.course_spinner);
+    void spinnertasks() {
+        spinnersubject = (Spinner) findViewById(R.id.course_spinner);
         Set<String> defaultval = new HashSet<String>();
         defaultval.add("English");
         defaultval.add("Mathmatics");
@@ -119,19 +118,22 @@ public class Performance extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinnersubject.setAdapter(adapter);
-        Log.v(TAG,"course_id will contain"+course_id);
-        spinnersubject.setSelection(Integer.parseInt(course_id)-1);
+        Log.v(TAG, "course_id will contain" + course_id);
+        spinnersubject.setSelection(Integer.parseInt(course_id) - 1);
         spinnersubject.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                course_id = Integer.toString(position+1);
-                performancetask();
+                course_id = Integer.toString(position + 1);
+                spinnertask2();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+    void spinnertask2()
+    {
         spinnerclass=(Spinner)findViewById(R.id.classroom_spinner);
         Set<String> defaultvalclass = new HashSet<String>();
         defaultvalclass.add("I-A");
@@ -248,13 +250,13 @@ public class Performance extends AppCompatActivity {
 
         }
         Log.v(TAG, "List = " + String.valueOf(resultList));
-
+        progressDialog.dismiss();
         return resultList;
 
     }
     public void showProgressDialog() {
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Getting Results");
+        progressDialog.setMessage("Getting Performance..");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setIndeterminate(true);
         progressDialog.show();

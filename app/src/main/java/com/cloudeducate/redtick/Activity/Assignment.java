@@ -79,7 +79,7 @@ public class Assignment extends AppCompatActivity {
         bundle=getIntent().getExtras();
         if(bundle!=null)
         course_id=bundle.getString("course_id");
-
+        Log.v(TAG,course_id+"courseid in attendance via course apge");
         create=(TextView)findViewById(R.id.create);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,7 +194,7 @@ public class Assignment extends AppCompatActivity {
                     assignment.setTitle(jsonObject.getString(Constants.ASSIGNMENT_TITLE));
                     assignment.setCourse(jsonObject.getString(Constants.ASSIGNMENT_COURSE));
                     assignment.setDeadline(jsonObject.getString(Constants.ASSIGNMENT_DEADLINE));
-                    assignment.setClassroom(jsonObject.getString(Constants.COURSE_ID) + " " + jsonObject.getString(Constants.CLASSROOM_ID));
+                    assignment.setClassroom(jsonObject.getString(Constants.CLASS) + " " + jsonObject.getString(Constants.SECTION));
                     assignment.setClassroomid(jsonObject.getString(Constants.CLASSROOM_ID));
                     assignment.setCourseid(jsonObject.getString(Constants.COURSE_ID));
                     assignment.setId(jsonObject.getString(Constants.ASSIGNMENT_ID));
