@@ -3,6 +3,7 @@ package com.cloudeducate.redtick.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -34,8 +36,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.ConnectException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,7 +62,8 @@ public class Grade_Assignment extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private GradeAssignmentAdapter studentAdapter;
     private final String TAG = "MyApp";
-    String assignment_id;
+    String assignment_id,message;
+    String[] userid_array,grade_array,remark_array;
     Button submit;
     Bundle bundle;
 
@@ -177,5 +190,146 @@ public class Grade_Assignment extends AppCompatActivity {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setIndeterminate(true);
         progressDialog.show();
+    }
+
+    public void submittask() {
+
+        int size=list.size();
+        userid_array = new String[size];
+        grade_array = new String[size];
+        remark_array=new String[size];
+        for (int i = 0; i < size; i++) {
+
+            Attendance_model attendance_model = new Attendance_model();
+
+            // Creating JSONObject from JSONArray
+            attendance_model = list.get(i);
+            String userid = attendance_model.getuserid();
+            int valueofpresence = attendance_model.getGradevalue();
+            String presence = Integer.toString(valueofpresence);
+            String remark = attendance_model.getstudentremark();
+
+            Log.v(TAG, userid + " " + presence);
+            userid_array[i] = userid;
+            grade_array[i] = presence;
+            remark_array[i] = remark;
+            Log.v(TAG, userid_array.toString() + " " + grade_array.toString() + " " + remark_array);
+        }
+            Toast.makeText(this, "Submiting Assignment Grade..", Toast.LENGTH_LONG).show();
+            PerformanceTask performancesubmit=new PerformanceTask();
+            performancesubmit.execute();
+            if(message!=null)
+                Toast.makeText(Grade_Assignment.this,message,Toast.LENGTH_LONG).show();
+
+    }
+
+    public class PerformanceTask extends AsyncTask<Void, Void, String>
+    {
+
+        final String mlink;
+        String error=null;
+        HttpURLConnection conn;
+        BufferedReader bufferedReader;
+
+        PerformanceTask()
+        {
+           assignment_id="1";
+            mlink = "http://cloudeducate.com//assignments/gradeIt/"+assignment_id+".json";
+
+        }
+        @Override
+        protected String doInBackground(Void... params) {
+
+            try
+            {
+                URL url=new URL(mlink);
+                StringBuilder postData=new StringBuilder();
+                for(int i=0;i<userid_array.length;i++) {
+
+                    if (postData.length() != 0)
+                        postData.append('&');
+                    postData.append(URLEncoder.encode("grade[]", "UTF-8"));
+                    postData.append('=');
+                    postData.append(URLEncoder.encode(grade_array[i], "UTF-8"));
+
+                    if (postData.length() != 0)
+                        postData.append('&');
+                    postData.append(URLEncoder.encode("remarks[]", "UTF-8"));
+                    postData.append('=');
+                    postData.append(URLEncoder.encode(remark_array[i], "UTF-8"));
+
+                    if (postData.length() != 0)
+                        postData.append('&');
+                    postData.append(URLEncoder.encode("user_id[]", "UTF-8"));
+                    postData.append('=');
+                    postData.append(URLEncoder.encode(userid_array[i], "UTF-8"));
+                }
+                if(postData.length()!=0)
+                    postData.append('&');
+                postData.append(URLEncoder.encode("action", "UTF-8"));
+                postData.append('=');
+                postData.append(URLEncoder.encode("saveMarks","UTF-8"));
+                //Log.v(TAG,param.toString());
+
+                Log.v(TAG,"post url "+postData.toString());
+                byte[] postDataBytes=postData.toString().getBytes("UTF-8");
+                conn=(HttpURLConnection)url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("X-Access-Token", metadata);
+                conn.setRequestProperty("X-App", "teacher");
+                conn.getOutputStream().write(postDataBytes);
+                InputStream inputStream = conn.getInputStream();
+
+                StringBuffer buffer = new StringBuffer();
+                if(inputStream==null){
+                    return "null_inputstream";
+                }
+
+                bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+                String line ;
+
+                while ( (line=bufferedReader.readLine())!=null ){
+                    buffer.append(line + '\n');
+                }
+
+                if (buffer.length() == 0) {
+                    return "null_inputstream";
+                }
+
+                String stringJSON = buffer.toString();
+                Log.v("MyApp", "JSON retured in Attendance" + stringJSON);
+                return stringJSON;
+
+            } catch (UnknownHostException | ConnectException e) {
+                error = "null_internet" ;
+                e.printStackTrace();
+            } catch (IOException e) {
+                error= "null_file";
+                e.printStackTrace();
+            } finally {
+                if ( conn!= null) {
+                    conn.disconnect();
+                }
+                if (bufferedReader != null) {
+                    try {
+                        bufferedReader.close();
+                    } catch (final IOException e) {
+//                        Log.e(LOG_CAT, "ErrorClosingStream", e);
+                    }
+                }
+            }
+
+            return error;
+        }
+        @Override
+        protected void onPostExecute(final String success) {
+            try {
+                JSONObject jsonobject=new JSONObject(success);
+                message=jsonobject.getString("message");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
