@@ -9,4 +9,12 @@ public class URL {
         String url="auth/login.json";
         return Constants.BASE_URL + url;
     }
+    public static String getAttendanceURL() {
+        String url1 = "teacher/manageAttendance.json";
+        return Constants.BASE_URL + url1;
+    }
+    public static String getAssignmentURL(String course_id) {
+        String url1 = "assignments/manage/";
+        return Constants.BASE_URL + url1+course_id+".json";
+    }
 }

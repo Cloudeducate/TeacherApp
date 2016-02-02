@@ -9,17 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Activity.MainActivity"
-    tools:showIn="@layout/app_bar_main">
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvcourses"
-        android:layout_width="match_parent"
-        android:layout_below="@id/list"
-        android:layout_marginTop="200dp"
-        android:layout_height="match_parent"
-        android:paddingTop="@dimen/big_margin"/>
-
+    tools:context="com.cloudeducate.redtick.Activity.Profile"
+    tools:showIn="@layout/activity_profile">
 
 </RelativeLayout>

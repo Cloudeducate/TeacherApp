@@ -9,17 +9,23 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Activity.MainActivity"
-    tools:showIn="@layout/app_bar_main">
-
+    tools:context="com.cloudeducate.redtick.Activity.Grade_Assignment"
+    tools:showIn="@layout/activity_grade__assignment">
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="25sp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_height="wrap_content"
+        android:text="List Of Students"
+        android:id="@+id/list"
+        />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvcourses"
+        android:id="@+id/rvgradelist"
         android:layout_width="match_parent"
         android:layout_below="@id/list"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_height="match_parent"
         android:paddingTop="@dimen/big_margin"/>
-
 
 </RelativeLayout>

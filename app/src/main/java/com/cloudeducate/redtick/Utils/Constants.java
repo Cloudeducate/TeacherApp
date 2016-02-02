@@ -16,21 +16,27 @@ public class Constants {
     public static final String ASSIGNMENT_STATUS = "submitted";
 
     public static final String USER = "user";
-    public static final String NAME = "_name";
+    public static final String NAME = "name";
     public static final String META = "meta";
     public static final String METAVALUE = "_meta_value";
     public static final String EMAIL = "_email";
     public static final String PHONE = "_phone";
     public static final String SCHOLAR = "scholar";
-
-    public static final String RESULT = "results";
-    public static final String HIGHEST = "highest";
-    public static final String TYPE = "type";
-    public static final String MARKS = "marks";
-    public static final String AVERAGE = "average";
-    public static final String YEAR = "year";
+    public static final String STUDENTS = "students";
+    public static final String ROLLNO= "roll_no";
+    public static final String PRESENCE = "presence";
+    public static final String GRADE = "grade";
+    public static final String REMARKS="remarks";
+    public static final String MESSAGE="message";
+    public static final String CLASS = "class";
+    public static final String USER_ID = "user_id";
+    public static final String USERNNAME = "username";
+    public static final String PASSWORD = "password";
 
     public static final String COURSES = "courses";
+    public static final String CLASSROOM_ID = "classroom_id";
+    public static final String COURSE = "course";
+    public static final String SECTION = "section";
     public static final String COURSE_ID = "course_id";
     public static final String TITLE = "_title";
 
