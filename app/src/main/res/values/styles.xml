@@ -17,4 +17,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="TimelineTopBar">
+        <item name="android:textColor">@color/md_amber_900</item>
+        <!--<item name="android:textStyle">italic</item>-->
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

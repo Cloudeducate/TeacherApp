@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,8 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,7 +29,6 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.cloudeducate.redtick.Adapters.Performance_Adapter;
-import com.cloudeducate.redtick.Adapters.Studentlist_Adapter;
 import com.cloudeducate.redtick.Model.Attendance_model;
 import com.cloudeducate.redtick.R;
 import com.cloudeducate.redtick.Utils.Constants;
@@ -70,7 +67,7 @@ public class Performance extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private Performance_Adapter studentAdapter;
     private final String TAG = "MyApp";
-    Button submit;
+    TextView submit;
     String message,classsupdated;
     String[] userid_array=null;
     String[] grade_array=null;
@@ -93,7 +90,7 @@ public class Performance extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
 
         spinnertasks();
-        submit=(Button)findViewById(R.id.submit_performance);
+        submit=(TextView)findViewById(R.id.submit_performance);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

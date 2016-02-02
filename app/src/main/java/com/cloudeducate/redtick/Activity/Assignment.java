@@ -1,13 +1,10 @@
 package com.cloudeducate.redtick.Activity;
 
 import android.app.ProgressDialog;
-import android.app.assist.AssistStructure;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,8 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -60,7 +57,7 @@ public class Assignment extends AppCompatActivity {
     private String metadata;
     private AssignmentRecyclerviewAdapter assignmentRecyclerviewAdapter;
     public static final String TAG = "MyApp";
-    private Button create;
+    private TextView create;
     Bundle bundle;
 
     @Override
@@ -74,14 +71,6 @@ public class Assignment extends AppCompatActivity {
         sharedpref = this.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
         metadata = sharedpref.getString(Constants.METAKEY, "null");
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(Assignment.this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);
@@ -91,7 +80,7 @@ public class Assignment extends AppCompatActivity {
         if(bundle!=null)
         course_id=bundle.getString("course_id");
 
-        create=(Button)findViewById(R.id.create);
+        create=(TextView)findViewById(R.id.create);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -11,7 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -29,7 +29,6 @@ import com.cloudeducate.redtick.Adapters.AttendanceAdapter;
 import com.cloudeducate.redtick.Model.Attendance_model;
 import com.cloudeducate.redtick.R;
 import com.cloudeducate.redtick.Utils.Constants;
-
 import com.cloudeducate.redtick.Utils.URL1;
 import com.cloudeducate.redtick.Volley.VolleySingleton;
 
@@ -63,7 +62,7 @@ public class Manage_Attendance extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private AttendanceAdapter attendanceAdapter;
     private final String TAG = "MyApp";
-    Button submit;
+    TextView submit;
    String message,classsupdated;
     String[] userid_array=null;
     String[] presence_array=null;
@@ -83,7 +82,7 @@ public class Manage_Attendance extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.rvattendance);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(Manage_Attendance.this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);
-        submit=(Button)findViewById(R.id.submit);
+        submit=(TextView)findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

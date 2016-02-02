@@ -8,55 +8,83 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.cloudeducate.redtick.Activity.Manage_Attendance"
     tools:showIn="@layout/activity_performance">
+
+    <TextView
+        android:id="@+id/up_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp"
+        android:layout_marginLeft="@dimen/small_padding"
+        android:text="Select Subject"
+        android:textStyle="bold"
+        android:textColor="@color/md_blue_grey_300"
+        android:textSize="15sp"
+        android:layout_below="@+id/submitlayout"/>
+
     <Spinner
         android:id="@+id/course_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/up_tv"
+        android:layout_marginLeft="@dimen/big_margin"
+        android:layout_marginTop="@dimen/small_padding" />
+
+    <TextView
+        android:id="@+id/up_tv_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/submitlayout"
-        android:layout_marginTop="@dimen/small_padding"
-        android:layout_marginLeft="@dimen/big_margin"/>
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp"
+        android:layout_marginLeft="@dimen/small_padding"
+        android:text="Select Classroom"
+        android:textStyle="bold"
+        android:textColor="@color/md_blue_grey_300"
+        android:textSize="15sp"
+        android:layout_below="@+id/course_spinner"/>
+
     <Spinner
         android:id="@+id/classroom_spinner"
-        android:layout_width="wrap_content"
-        android:layout_below="@id/course_spinner"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_padding"
-        android:layout_marginLeft="@dimen/big_margin"/>
-
+        android:layout_below="@id/up_tv_two"
+        android:layout_marginLeft="@dimen/big_margin"
+        android:layout_marginTop="@dimen/small_padding" />
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvperformance"
-        android:layout_below="@+id/classroom_spinner"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/classroom_spinner"
+        android:layout_marginTop="8dp"
         android:paddingTop="@dimen/big_margin" />
 
 
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <android.support.v7.widget.CardView
         android:id="@+id/submitlayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/small_padding"
-        android:paddingTop="@dimen/big_padding">
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="3dp"
+        app:cardPreventCornerOverlap="false">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
+        <TextView
             android:id="@+id/submit_performance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/item_top_bg"
+            android:gravity="center"
+            android:paddingBottom="@dimen/big_padding"
+            android:paddingTop="@dimen/big_padding"
             android:text="Submit Performance"
-            android:layout_gravity="center_horizontal"/>
+            android:textColor="@color/md_white_1000"
+            android:textSize="20sp"
+            android:textStyle="normal" />
 
-    </LinearLayout>
-
+    </android.support.v7.widget.CardView>
 
 
 </RelativeLayout>

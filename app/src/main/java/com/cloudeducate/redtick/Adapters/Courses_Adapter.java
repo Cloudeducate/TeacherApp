@@ -8,15 +8,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.cloudeducate.redtick.Activity.Assignment;
 import com.cloudeducate.redtick.Activity.Performance;
-import com.cloudeducate.redtick.Model.Attendance_model;
 import com.cloudeducate.redtick.R;
 
 import java.util.ArrayList;
@@ -41,7 +37,7 @@ public class Courses_Adapter extends RecyclerView.Adapter<Courses_Adapter.ViewHo
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View itemLayoutView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_courses, null);
+                .inflate(R.layout.layout_card_course, null);
 
         // create ViewHolder
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
@@ -86,15 +82,15 @@ public class Courses_Adapter extends RecyclerView.Adapter<Courses_Adapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView subjectname, classroom;
-        public Button assignment, Performance;
+        public TextView assignment, Performance;
 
         public ViewHolder(View itemView) {
             super(itemView);
             courseView = itemView;
             subjectname = (TextView) itemView.findViewById(R.id.subject_name);
             classroom = (TextView) itemView.findViewById(R.id.classroom);
-            assignment = (Button) itemView.findViewById(R.id.assignment);
-            Performance = (Button) itemView.findViewById(R.id.performance);
+            assignment = (TextView) itemView.findViewById(R.id.assignment);
+            Performance = (TextView) itemView.findViewById(R.id.performance);
         }
     }
 }
