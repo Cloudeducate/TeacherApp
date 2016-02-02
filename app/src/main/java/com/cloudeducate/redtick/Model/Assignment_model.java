@@ -6,134 +6,68 @@ package com.cloudeducate.redtick.Model;
 public class Assignment_model {
 
     private String title;
-    private String description;
     private String deadline;
     private String id;
     private String course;
-    private Boolean submitted;
-    private String filename;
+    private String classroom;
+    private String course_id;
+    private String classroom_id;
 
 
-    /**
-     *
-     * @return
-     * The title
-     */
     public String getTitle() {
         return title;
     }
 
-    /**
-     *
-     * @param title
-     * The title
-     */
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /**
-     *
-     * @return
-     * The description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     *
-     * @param description
-     * The description
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
-     *
-     * @return
-     * The deadline
-     */
     public String getDeadline() {
         return deadline;
     }
 
-    /**
-     *
-     * @param deadline
-     * The deadline
-     */
     public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 
-    /**
-     *
-     * @return
-     * The id
-     */
+
     public String getId() {
         return id;
     }
 
-    /**
-     *
-     * @param id
-     * The id
-     */
     public void setId(String id) {
         this.id = id;
     }
 
-    /**
-     *
-     * @return
-     * The course
-     */
+
     public String getCourse() {
         return course;
     }
-
-    /**
-     *
-     * @param course
-     * The course
-     */
     public void setCourse(String course) {
         this.course = course;
     }
 
-    /**
-     *
-     * @return
-     * The submitted
-     */
-    public Boolean getSubmitted() {
-        return submitted;
+    public String getCourseid() {
+        return course_id;
+    }
+    public void setCourseid(String courseid) {
+        this.course_id = courseid;
     }
 
-    /**
-     *
-     * @param submitted
-     * The submitted
-     */
-    public void setSubmitted(Boolean submitted) {
-        this.submitted = submitted;
+    public String getClassroomid() {
+        return classroom_id;
+    }
+    public void setClassroomid(String classid) {
+        this.classroom_id = classid;
     }
 
-    /**
-     *
-     * @return
-     * The filename
-     */
-    public String getFilename() {
-        return filename;
+    public String getClassroom() {
+        return classroom;
+    }
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
     }
 
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
 
 
 

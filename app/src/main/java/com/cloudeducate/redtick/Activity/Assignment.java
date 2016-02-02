@@ -56,11 +56,12 @@ public class Assignment extends AppCompatActivity {
     private List<Assignment_model> list = new ArrayList<Assignment_model>();
     private RecyclerView mRecyclerView;
     private SharedPreferences sharedpref;
-    private String course_id;
+    private String course_id="1";
     private String metadata;
     private AssignmentRecyclerviewAdapter assignmentRecyclerviewAdapter;
     public static final String TAG = "MyApp";
     private Button create;
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,11 @@ public class Assignment extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(Assignment.this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);
+
+
+        bundle=getIntent().getExtras();
+        if(bundle!=null)
+        course_id=bundle.getString("course_id");
 
         create=(Button)findViewById(R.id.create);
         create.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +116,7 @@ public class Assignment extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+        spinner.setSelection(Integer.parseInt(course_id));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -132,7 +139,7 @@ public class Assignment extends AppCompatActivity {
         if (course_id == null) {
             course_id = "1";
         }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL1.getAssignmentURL("1"), new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL1.getAssignmentURL(course_id), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if (response.toString() == null) {
@@ -197,11 +204,10 @@ public class Assignment extends AppCompatActivity {
                     assignment.setTitle(jsonObject.getString(Constants.ASSIGNMENT_TITLE));
                     assignment.setCourse(jsonObject.getString(Constants.ASSIGNMENT_COURSE));
                     assignment.setDeadline(jsonObject.getString(Constants.ASSIGNMENT_DEADLINE));
-                    //assignment.setDescription(jsonObject.getString(Constants.ASSIGNMENT_DESCRIPTION));
+                    assignment.setClassroom(jsonObject.getString(Constants.COURSE_ID) + " " + jsonObject.getString(Constants.CLASSROOM_ID));
+                    assignment.setClassroomid(jsonObject.getString(Constants.CLASSROOM_ID));
+                    assignment.setCourseid(jsonObject.getString(Constants.COURSE_ID));
                     assignment.setId(jsonObject.getString(Constants.ASSIGNMENT_ID));
-                    //assignment.setFilename(jsonObject.getString(Constants.ASSIGNMENT_FILNAME));
-                    //assignment.setSubmitted(Boolean.valueOf(jsonObject.getString(Constants.ASSIGNMENT_STATUS)));
-
                     Log.v(TAG, "test = " + String.valueOf(jsonObject.getString(Constants.ASSIGNMENT_TITLE)));
 
                     assignmentList.add(assignment);

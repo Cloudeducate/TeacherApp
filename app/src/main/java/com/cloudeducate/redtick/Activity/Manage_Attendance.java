@@ -217,11 +217,11 @@ public class Manage_Attendance extends AppCompatActivity {
             userid_array[i] = userid;
             presence_array[i] = presence;
             Log.v(TAG, userid_array.toString() + " " + presence_array.toString());
-            Toast.makeText(this, "Submiting Attendance..", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Submiting Attendance..", Toast.LENGTH_LONG).show();
             AttendanceTask attendancesubmit=new AttendanceTask();
             attendancesubmit.execute();
             if(message!=null)
-                Toast.makeText(Manage_Attendance.this,message+" For Class "+classsupdated,Toast.LENGTH_LONG);
+                Toast.makeText(Manage_Attendance.this,message+" For Class "+classsupdated,Toast.LENGTH_LONG).show();
         }
     }
 

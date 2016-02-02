@@ -52,6 +52,7 @@ public class Grade_Assignment extends AppCompatActivity {
     private final String TAG = "MyApp";
     String assignment_id;
     Button submit;
+    Bundle bundle;
 
 
     @Override
@@ -65,6 +66,8 @@ public class Grade_Assignment extends AppCompatActivity {
         metadata = sharedpref.getString(Constants.METAKEY, "null");
         Log.v(TAG, metadata + "meta value for teacher");
 
+        bundle=getIntent().getExtras();
+        assignment_id=bundle.getString("assignment_id");
         mRecyclerView = (RecyclerView) findViewById(R.id.rvgradelist);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(Grade_Assignment.this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);

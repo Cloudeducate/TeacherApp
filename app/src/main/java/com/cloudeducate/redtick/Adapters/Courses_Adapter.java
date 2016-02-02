@@ -2,6 +2,7 @@ package com.cloudeducate.redtick.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.cloudeducate.redtick.Activity.Assignment;
+import com.cloudeducate.redtick.Activity.Performance;
 import com.cloudeducate.redtick.Model.Attendance_model;
 import com.cloudeducate.redtick.R;
 
@@ -48,21 +51,27 @@ public class Courses_Adapter extends RecyclerView.Adapter<Courses_Adapter.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-        String course_id,classroom_id;
+        final String course_id,classroom_id;
         holder.subjectname.setText(list.get(position)[0]);
-        holder.classroom.setText("Rollno." + list.get(position)[1]);
+        holder.classroom.setText("Class " + list.get(position)[1]);
         classroom_id=list.get(position)[3];
         course_id=list.get(position)[2];
+        final Bundle bundle=new Bundle();
+        bundle.putString("course_id",course_id);
+        bundle.putString("class_id",classroom_id);
         holder.assignment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+              Intent intent=new Intent(context, Assignment.class).putExtras(bundle).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
         holder.Performance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(context, Performance.class).putExtras(bundle).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
         Log.v("MyApp", list.get(position)[0]);

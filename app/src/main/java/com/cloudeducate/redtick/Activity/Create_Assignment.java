@@ -121,7 +121,6 @@ public class Create_Assignment extends AppCompatActivity implements FileChooserD
         File sourceFile = new File(sourceFileUri);
 
         if (!sourceFile.isFile()) {
-
             dialog.dismiss();
 
             Log.e("uploadFile", "Source File not exist :"+
@@ -187,7 +186,7 @@ public class Create_Assignment extends AppCompatActivity implements FileChooserD
                 dos = new DataOutputStream(conn.getOutputStream());
 
                 dos.writeBytes(twoHyphens + boundary + lineEnd);
-                dos.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""
+                dos.writeBytes("Content-Disposition: form-data; name=\"attachment\";filename=\""
                         + fileName + "\"" + lineEnd);
 
                 dos.writeBytes(lineEnd);

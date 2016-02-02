@@ -42,8 +42,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -137,6 +139,8 @@ public class MainActivity extends AppCompatActivity
 
     public List<String[]> parseJson(String jsonString) {
         List<String[]> resultList = new ArrayList<String[]>();
+        Set<String> values=new HashSet<>();
+        Set<String> classroom=new HashSet<>();
         if (jsonString != null) {
 
             try {
@@ -149,21 +153,22 @@ public class MainActivity extends AppCompatActivity
 
                 // JSONArray has x JSONObject
                 for (int i = 0; i < jsonArray.length(); i++) {
-
-
-
                     // Creating JSONObject from JSONArray
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     String[] string=new String[4];
                     string[0]=jsonObject.getString(Constants.COURSE);
-                    string[1]=jsonObject.getString(Constants.GRADE)+jsonObject.getString(Constants.SECTION);
+                    string[1]=jsonObject.getString(Constants.GRADE)+ " "+jsonObject.getString(Constants.SECTION);
                     string[2]=jsonObject.getString(Constants.CLASSROOM_ID);
                     string[3]=jsonObject.getString(Constants.COURSE_ID);
                     Log.v(TAG, "test = " + String.valueOf(jsonObject.getString(Constants.COURSE)+String.valueOf(jsonObject.getString(Constants.GRADE))));
-
                     resultList.add(string);
-
+                    values.add(string[0]);
+                    classroom.add(string[1]);
                 }
+                sharedpref = this.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=sharedpref.edit();
+                editor.putStringSet(Constants.COURSES,values);
+                editor.commit();
 
             } catch (JSONException e) {
                 // TODO Auto-generated catch block
@@ -238,7 +243,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(assignment);
 
         } else if (id == R.id.nav_classes) {
-            Intent classes=new Intent(this,Classes.class);
+            Intent classes=new Intent(this,Create_Assignment.class);
             startActivity(classes);
 
         } else if (id == R.id.nav_profile) {
