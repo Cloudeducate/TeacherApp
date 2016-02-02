@@ -21,7 +21,7 @@
         <item
             android:id="@+id/nav_classes"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Available Classes" />
+            android:title="New Assignment" />
 
     </group>
 

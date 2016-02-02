@@ -273,11 +273,12 @@ public class Performance extends AppCompatActivity {
             userid_array[i] = userid;
             grade_array[i] = presence;
             Log.v(TAG, userid_array.toString() + " " + grade_array.toString());
-            Toast.makeText(this, "Submiting Performance..", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Submiting Performance..", Toast.LENGTH_LONG).show();
             PerformanceTask performancesubmit=new PerformanceTask();
             performancesubmit.execute();
             if(message!=null)
-                Toast.makeText(Performance.this,message+" For Class "+classsupdated,Toast.LENGTH_LONG);
+                Toast.makeText(Performance.this,message,Toast.LENGTH_LONG).show();
+
         }
     }
 
@@ -291,6 +292,8 @@ public class Performance extends AppCompatActivity {
 
         PerformanceTask()
         {
+            classroom_id="1";
+            course_id="1";
             mlink = "http://cloudeducate.com/teacher/weeklyStudentsPerf/"+course_id+"/"+classroom_id+".json";
             userid_array=new String[list.size()];
             grade_array=new String[list.size()];

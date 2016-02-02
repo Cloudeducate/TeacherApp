@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -54,19 +55,19 @@ public class AssignmentRecyclerviewAdapter extends RecyclerView.Adapter<Assignme
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
         holder.title.setText(list.get(position).getTitle());
-        holder.desc.setText(list.get(position).getDescription());
         holder.deadline.setText("Deadline : " + list.get(position).getDeadline());
-        holder.course.setText(list.get(position).getCourse());
+        holder.course.setText("Subject: " + list.get(position).getCourse());
+        holder.status.setText("Class : " + list.get(position).getClassroom());
+        final Bundle bundle=new Bundle();
+        bundle.putString("assignment_id",list.get(position).getId());
+
         cards.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Intent intent=new Intent(context,Grade_Assignment.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Intent intent = new Intent(context, Grade_Assignment.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtras(bundle);
                 context.startActivity(intent);
             }
         });
-        //holder.filename.setText(list.get(position).getFilename());
-//
-
 
     }
 
@@ -77,15 +78,13 @@ public class AssignmentRecyclerviewAdapter extends RecyclerView.Adapter<Assignme
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, desc, filename, course, status, deadline;
+        public TextView title, course, status, deadline;
 
         public ViewHolder(View itemView) {
             super(itemView);
             assignmentView = itemView;
             title = (TextView) itemView.findViewById(R.id.title);
-            desc = (TextView) itemView.findViewById(R.id.description);
             deadline = (TextView) itemView.findViewById(R.id.deadline);
-            filename = (TextView) itemView.findViewById(R.id.filename);
             course = (TextView) itemView.findViewById(R.id.course);
             status = (TextView) itemView.findViewById(R.id.status);
             cards=(CardView) itemView.findViewById(R.id.cardview_assignment);
