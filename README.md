@@ -165,3 +165,30 @@ Send a POST request with
 ```
 /conversation/message/{$conversation_id}.json
 ```
+
+### Notifications ###
+
+#### All Students ####
+Teacher can notify all the students of the class in which he/she is teaching a subject
+PARAMS:
+- $course_id (Required)
+- $classroom_id (Required)
+
+Send a POST Request to this page with the message teacher want to send
+- message: Message teacher want to send to the students
+- action: notifyStudents
+
+```
+/notification/students/{$course_id}/{$classroom_id}.json
+```
+
+#### Assignment Notification ####
+Teacher can notify students after creating an assignment.
+
+Send a GET Request to /assignments/manage if assignment's check the "notified" key 
+- if set to false then teacher should be presented with option to send notification
+- else display 'notified' and ask for confirmation before sending out notification again
+
+```
+/notification/assignment/{$assignment_id}.json
+```
