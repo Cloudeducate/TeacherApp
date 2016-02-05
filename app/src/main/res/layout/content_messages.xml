@@ -4,12 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.cloudeducate.redtick.Activity.Messages"
+    tools:context=".Activities.MessagesActivity"
     tools:showIn="@layout/activity_messages">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/submitlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/colorPrimaryDark"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="3dp"
+            app:cardPreventCornerOverlap="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/big_padding"
+                android:paddingTop="@dimen/big_padding">
+
+                <TextView
+                    android:id="@+id/create"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/item_top_bg"
+                    android:gravity="center"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:text="Create New Conversation" />
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvallconv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/big_margin" />
+    </LinearLayout>
 
 </RelativeLayout>

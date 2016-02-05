@@ -3,7 +3,7 @@
     package="com.cloudeducate.redtick">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".ApplicationWrapper"
@@ -57,6 +57,14 @@
         <activity
             android:name=".Activity.Grade_Assignment"
             android:label="@string/title_activity_grade__assignment"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.View_Conversation"
+            android:label="@string/title_activity_view__conversation"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.Create_Conversation"
+            android:label="@string/title_activity_create__conversation"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

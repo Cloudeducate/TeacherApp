@@ -13,7 +13,11 @@
         android:layout_marginRight="@dimen/big_padding"
         android:layout_marginTop="@dimen/big_padding"
         android:layout_marginBottom="@dimen/big_padding"
-        card_view:cardCornerRadius="1dp">
+        card_view:cardCornerRadius="1dp"
+        card_view:cardBackgroundColor="@color/md_blue_100"
+        android:elevation="20dp"
+        style="@style/MyTheme"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"

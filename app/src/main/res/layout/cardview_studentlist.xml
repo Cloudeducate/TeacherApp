@@ -15,7 +15,9 @@
             app:cardPreventCornerOverlap="false"
             android:background="?selectableItemBackground"
             android:layout_marginTop="35dp"
-            android:layout_weight="0.05">
+            android:layout_weight="0.05"
+            style="@style/MyTheme"
+            >
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

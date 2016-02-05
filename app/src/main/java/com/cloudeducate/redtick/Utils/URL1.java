@@ -21,9 +21,17 @@ public class URL1 {
         String url3 = "assignments/manage/";
         return Constants.BASE_URL + url3+course_id+".json";
     }
-    public static String getsubmitlistURL(String assignment_id) {
-        String url4 = "assignments/submissions/";
-        return Constants.BASE_URL + url4+assignment_id+".json";
+    public static String getconversation() {
+        String url4 = "conversation/all.json";
+        return Constants.BASE_URL +url4 ;
+    }
+    public static String getmessages(String converstaionid) {
+        String url6 = "/conversation/view/";
+        return Constants.BASE_URL+url6+converstaionid+".json" ;
+    }
+    public static String sendmessages(String converstaionid) {
+        String url6 = "/conversation/message/";
+        return Constants.BASE_URL+url6+converstaionid+".json" ;
     }
     public static String getsubmitgradeURL(String assignment_id) {
         String url5 = "assignments/gradeIt/";

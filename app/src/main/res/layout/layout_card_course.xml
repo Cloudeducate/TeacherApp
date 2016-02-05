@@ -62,9 +62,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/small_padding"
-                    android:background="@drawable/item_bg"
+                    android:textColor="@color/md_white_1000"
+                    android:background="@drawable/item_top_bg"
                     android:text="Assignment"
-                    android:textColor="@color/md_pink_500" />
+                   />
 
                 <TextView
                     android:id="@+id/performance"
@@ -73,9 +74,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/small_padding"
-                    android:background="@drawable/item_bg"
+                    android:textColor="@color/md_white_1000"
+                    android:background="@drawable/item_top_bg"
                     android:text="Performance"
-                    android:textColor="@color/md_pink_500" />
+                    />
             </LinearLayout>
 
         </RelativeLayout>

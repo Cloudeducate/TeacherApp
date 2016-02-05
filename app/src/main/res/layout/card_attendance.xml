@@ -13,7 +13,9 @@
         android:layout_marginTop="@dimen/very_small_padding"
         android:padding="@dimen/big_padding"
         app:cardBackgroundColor="@android:color/white"
-        app:cardCornerRadius="1dp">
+        app:cardCornerRadius="1dp"
+        style="@style/MyTheme"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"

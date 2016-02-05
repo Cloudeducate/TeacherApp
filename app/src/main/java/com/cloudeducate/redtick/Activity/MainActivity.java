@@ -169,6 +169,7 @@ public class MainActivity extends AppCompatActivity
                 sharedpref = this.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor=sharedpref.edit();
                 editor.putStringSet(Constants.COURSES,values);
+                editor.putStringSet(Constants.CLASS,classroom);
                 editor.commit();
 
             } catch (JSONException e) {

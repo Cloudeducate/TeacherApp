@@ -8,12 +8,14 @@ public class Constants {
 
     public static final String ASSIGNMENTS = "assignments";
     public static final String ASSIGNMENT_TITLE = "title";
-    public static final String ASSIGNMENT_DESCRIPTION = "description";
     public static final String ASSIGNMENT_DEADLINE = "deadline";
     public static final String ASSIGNMENT_COURSE = "course";
-    public static final String ASSIGNMENT_FILNAME = "filename";
     public static final String ASSIGNMENT_ID = "id";
-    public static final String ASSIGNMENT_STATUS = "submitted";
+
+    public static final String CONVERSATION = "conversations";
+    public static final String CONVERSATION_DISPLAY = "title";
+    public static final String CONVERSATION_ID = "id";
+
 
     public static final String USER = "user";
     public static final String NAME = "name";
@@ -28,6 +30,11 @@ public class Constants {
     public static final String GRADE = "grade";
     public static final String REMARKS="remarks";
     public static final String MESSAGE="message";
+    public static final String MESSAGES="messages";
+    public static final String CONTENT="content";
+    public static final String CREATED="created";
+    public static final String LIVE="live";
+
     public static final String CLASS = "class";
     public static final String USER_ID = "user_id";
     public static final String USERNNAME = "username";

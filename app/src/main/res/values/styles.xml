@@ -12,6 +12,11 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="MyTheme" >
+        <item name="android:elevation">20dp</item>
+        <item name="android:colorBackground">@color/md_orange_400</item>
+
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

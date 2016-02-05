@@ -68,7 +68,7 @@ public class Performance extends AppCompatActivity {
     private Performance_Adapter studentAdapter;
     private final String TAG = "MyApp";
     TextView submit;
-    String message,classsupdated;
+    String message;
     String[] userid_array=null;
     String[] grade_array=null;
     Spinner spinnersubject,spinnerclass;

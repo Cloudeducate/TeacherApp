@@ -14,4 +14,6 @@
     <string name="title_activity_profile">Profile</string>
     <string name="title_activity_create__assignment">Create Assignment</string>
     <string name="title_activity_grade__assignment">Grade Assignment</string>
+    <string name="title_activity_view__conversation">View_Conversation</string>
+    <string name="title_activity_create__conversation">Create_Conversation</string>
 </resources>
