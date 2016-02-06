@@ -26,24 +26,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:weightSum="2"
                 android:paddingBottom="@dimen/big_padding"
                 android:paddingTop="@dimen/big_padding">
 
                 <AutoCompleteTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/studentlist"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.6"
+                    android:layout_height="wrap_content"
                     android:ems="10"
                     android:textColor="@color/md_white_1000"
-                    android:textSize="17sp"
-                    />
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CREATE"
-                    android:id="@+id/createnewconv"
-                   />
+                    android:textSize="17sp" />
 
+                <TextView
+                    android:id="@+id/createnewconv"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.4"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/item_top_bg"
+                    android:gravity="center"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:text="Create " />
 
 
             </LinearLayout>

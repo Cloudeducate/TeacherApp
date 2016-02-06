@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,9 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -31,7 +27,6 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.cloudeducate.redtick.Adapters.ConversationAdapter;
-import com.cloudeducate.redtick.Adapters.Courses_Adapter;
 import com.cloudeducate.redtick.R;
 import com.cloudeducate.redtick.Utils.Constants;
 import com.cloudeducate.redtick.Utils.URL1;
@@ -43,10 +38,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Messages extends AppCompatActivity {
     String jsonData;
@@ -61,7 +54,7 @@ public class Messages extends AppCompatActivity {
     private final String TAG = "MyApp";
     private TextView createview;
     private AutoCompleteTextView actv;
-    private Button create;
+    private TextView create;
     private int size=4;
     private String username,useridselected,displayselect;
 
@@ -83,7 +76,7 @@ public class Messages extends AppCompatActivity {
         actv=(AutoCompleteTextView)findViewById(R.id.studentlist);
         conversationtask();
         newconversationtask();
-        create=(Button)findViewById(R.id.createnewconv);
+        create=(TextView)findViewById(R.id.createnewconv);
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

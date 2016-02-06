@@ -4,16 +4,14 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +26,6 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.cloudeducate.redtick.Adapters.ConversationAdapter;
 import com.cloudeducate.redtick.Adapters.ViewConversationAdapter;
 import com.cloudeducate.redtick.R;
 import com.cloudeducate.redtick.Utils.Constants;
@@ -57,7 +54,8 @@ public class View_Conversation extends AppCompatActivity {
     private ViewConversationAdapter conversationAdapter;
     private final String TAG = "MyApp";
     private String convname;
-    private TextView conview,send;
+    private TextView conview;
+    private ImageView send;
     private EditText messagesend;
     private Boolean success;
     private String conversation_id;
@@ -83,7 +81,7 @@ public class View_Conversation extends AppCompatActivity {
         conview=(TextView)findViewById(R.id.Convname);
         if(convname!="null")
             conview.setText(convname);
-        send=(TextView) findViewById(R.id.sendnewmessage);
+        send=(ImageView) findViewById(R.id.sendnewmessage);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
