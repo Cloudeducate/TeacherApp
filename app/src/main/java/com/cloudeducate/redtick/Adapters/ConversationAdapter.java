@@ -51,6 +51,7 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
 
         final String conversation_id;
         holder.convname.setText(list.get(position)[0]);
+        Log.v("MyApp",list.get(position)[0]);
         conversation_id=list.get(position)[1];
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override

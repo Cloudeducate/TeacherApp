@@ -29,18 +29,21 @@
                 android:paddingBottom="@dimen/big_padding"
                 android:paddingTop="@dimen/big_padding">
 
-                <TextView
-                    android:id="@+id/create"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@drawable/item_top_bg"
-                    android:gravity="center"
+                <AutoCompleteTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/studentlist"
+                    android:ems="10"
                     android:textColor="@color/md_white_1000"
                     android:textSize="17sp"
-                    android:textStyle="normal"
-                    android:text="Create New Conversation" />
+                    />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CREATE"
+                    android:id="@+id/createnewconv"
+                   />
+
 
 
             </LinearLayout>

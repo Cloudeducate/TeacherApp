@@ -25,6 +25,10 @@ public class URL1 {
         String url4 = "conversation/all.json";
         return Constants.BASE_URL +url4 ;
     }
+    public static String getcreateconversation() {
+        String url4 = "conversation/create";
+        return Constants.BASE_URL +url4 ;
+    }
     public static String getmessages(String converstaionid) {
         String url6 = "/conversation/view/";
         return Constants.BASE_URL+url6+converstaionid+".json" ;

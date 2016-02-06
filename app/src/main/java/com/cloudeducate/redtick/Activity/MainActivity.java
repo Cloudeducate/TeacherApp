@@ -60,7 +60,9 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView mRecyclerView;
     private Courses_Adapter coursesAdapter;
     private final String TAG = "MyApp";
-
+    Set<String> defvalues=new HashSet<>();
+    Set<String> coursedef=new HashSet<>();
+    Set<String> classdef=new HashSet<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,8 @@ public class MainActivity extends AppCompatActivity
 
         sharedpref= this.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
         metadata = sharedpref.getString(Constants.METAKEY, "null");
+        coursedef=sharedpref.getStringSet(Constants.COURSE, defvalues);
+        classdef=sharedpref.getStringSet(Constants.CLASS,defvalues);
         Log.v(TAG, metadata + "meta value for teacher");
 
         mRecyclerView = (RecyclerView) findViewById(R.id.rvcourses);
