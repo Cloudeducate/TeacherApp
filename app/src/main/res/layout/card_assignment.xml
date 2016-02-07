@@ -87,12 +87,13 @@
                 android:layout_alignBaseline="@id/filename_value"
                 android:layout_alignParentRight="true"
                 android:layout_toRightOf="@id/filename_value"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="85dp"
                 android:layout_marginTop="15dp"
-                android:background="@color/md_red_400"
                 android:text="Send Notification"
-                android:textColor="@color/md_white_1000"
-                android:textSize="20dp" />
+                android:textColor="@color/md_red_700"
+                android:textSize="14sp"
+                android:padding="@dimen/small_padding"
+                android:gravity="center_horizontal"/>
 
 
             <TextView

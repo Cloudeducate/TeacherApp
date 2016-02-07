@@ -90,6 +90,7 @@
                 android:layout_marginTop="@dimen/big_margin"
                 android:background="@drawable/login_butto_selector"
                 android:text="Send Notification"
+                android:padding="@dimen/big_padding"
                 android:textColor="@color/md_white_1000" />
 
         </RelativeLayout>

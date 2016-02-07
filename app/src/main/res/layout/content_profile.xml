@@ -96,7 +96,7 @@
                     android:layout_below="@id/phoneno"
                     android:layout_marginTop="10dp"
                     android:gravity="center_vertical|center_horizontal"
-                    android:text="Subjects"
+                    android:text="Subjectsori"
                     android:textColor="@color/md_blue_grey_900"
                     android:textSize="15sp" />
 
