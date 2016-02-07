@@ -65,38 +65,6 @@
                     android:textColor="@color/md_blue_grey_900"
                     android:textSize="17sp" />
 
-                <!--<TextView
-                    android:id="@+id/rollno"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/phone"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="ROLL no "
-                    android:textColor="@color/md_blue_grey_900"
-                    android:textSize="14sp" />-->
-
-                <!--<TextView
-                    android:id="@+id/section"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/rollno"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="Section "
-                    android:textColor="@color/md_amber_900"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/remarks"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/section"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="REMARKS "
-                    android:textColor="@color/md_blue_grey_900"
-                    android:textSize="15sp" />-->
 
                 <TextView
                     android:id="@+id/organisation"
