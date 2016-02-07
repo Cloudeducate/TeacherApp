@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.cloudeducate.redtick.Dialog.FileChooserDialog;
 import com.cloudeducate.redtick.R;
 
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -107,7 +108,6 @@ public class Create_Assignment extends AppCompatActivity implements FileChooserD
         byte[] buffer;
         int maxBufferSize = 1 * 1024 * 1024;
         File sourceFile = new File(sourceFileUri);
-
         if (!sourceFile.isFile()) {
             dialog.dismiss();
 

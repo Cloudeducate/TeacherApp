@@ -22,6 +22,10 @@
             android:id="@+id/nav_classes"
             android:icon="@drawable/ic_menu_manage"
             android:title="New Assignment" />
+        <item
+            android:id="@+id/nav_notify"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Send Notification" />
 
     </group>
 

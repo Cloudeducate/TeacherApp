@@ -195,15 +195,6 @@ public class MainActivity extends AppCompatActivity
         progressDialog.show();
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -255,6 +246,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_profile) {
             Intent profile=new Intent(this,Profile.class);
             startActivity(profile);
+
+        }
+        else if (id == R.id.nav_notify) {
+            Intent notify=new Intent(this,Send_Notification.class);
+            startActivity(notify);
 
         }
         else if (id == R.id.nav_logout) {

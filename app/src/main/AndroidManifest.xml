@@ -39,10 +39,6 @@
             android:label="@string/title_activity_performance"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.Classes"
-            android:label="@string/title_activity_classes"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Activity.Messages"
             android:label="@string/title_activity_messages"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -63,8 +59,8 @@
             android:label="@string/title_activity_view__conversation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.Create_Conversation"
-            android:label="@string/title_activity_create__conversation"
+            android:name=".Activity.Send_Notification"
+            android:label="@string/title_activity_send__notification"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
