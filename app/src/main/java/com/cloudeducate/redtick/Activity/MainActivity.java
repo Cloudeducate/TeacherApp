@@ -259,7 +259,6 @@ public class MainActivity extends AppCompatActivity
             SharedPreferences.Editor editor = sharedpref.edit();
             editor.clear();
             editor.commit();
-            moveTaskToBack(true);
             MainActivity.this.finish();
             Intent login=new Intent(this,LoginActivity.class);
             startActivity(login);
