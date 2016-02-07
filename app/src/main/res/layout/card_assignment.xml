@@ -81,23 +81,25 @@
                 android:textSize="12dp" />
 
             <TextView
-                android:id="@+id/filename"
+                android:id="@+id/notify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@id/filename_value"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="150dp"
-                android:layout_marginTop="10dp"
-                android:text="Deadline"
-                android:textColor="@color/md_blue_grey_900"
-                android:textSize="12dp" />
+                android:layout_toRightOf="@id/filename_value"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/md_red_400"
+                android:text="Send Notification"
+                android:textColor="@color/md_white_1000"
+                android:textSize="20dp" />
 
 
             <TextView
                 android:id="@+id/status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/filename"
+                android:layout_below="@id/notify"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:text="none"

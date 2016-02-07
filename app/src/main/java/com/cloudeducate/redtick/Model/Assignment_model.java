@@ -12,6 +12,7 @@ public class Assignment_model {
     private String classroom;
     private String course_id;
     private String classroom_id;
+    private String notify;
 
 
     public String getTitle() {
@@ -20,6 +21,14 @@ public class Assignment_model {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getNotify() {
+        return notify;
+    }
+
+    public void setNotify(String notify) {
+        this.notify = notify;
     }
 
     public String getDeadline() {

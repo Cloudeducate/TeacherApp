@@ -198,6 +198,7 @@ public class Assignment extends AppCompatActivity {
                     assignment.setClassroomid(jsonObject.getString(Constants.CLASSROOM_ID));
                     assignment.setCourseid(jsonObject.getString(Constants.COURSE_ID));
                     assignment.setId(jsonObject.getString(Constants.ASSIGNMENT_ID));
+                    assignment.setNotify(jsonObject.getString("notified"));
                     Log.v(TAG, "test = " + String.valueOf(jsonObject.getString(Constants.ASSIGNMENT_TITLE)));
 
                     assignmentList.add(assignment);

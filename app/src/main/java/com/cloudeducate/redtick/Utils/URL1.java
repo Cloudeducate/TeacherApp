@@ -34,14 +34,21 @@ public class URL1 {
         return Constants.BASE_URL+url6+converstaionid+".json" ;
     }
     public static String sendmessages(String converstaionid) {
-        String url6 = "/conversation/message/";
-        return Constants.BASE_URL+url6+converstaionid+".json" ;
+        String url7 = "/conversation/message/";
+        return Constants.BASE_URL+url7+converstaionid+".json" ;
     }
     public static String getsubmitgradeURL(String assignment_id) {
         String url5 = "assignments/gradeIt/";
         return Constants.BASE_URL + url5+assignment_id+".json";
     }
-
+    public static String getAssignNotifyURL(String assignment_id) {
+        String url5 = "notification/assignment/";
+        return Constants.BASE_URL + url5 + assignment_id+".json";
+    }
+    public static String getnotificationURL(String course_id,String classroom_id) {
+        String url8= "notification/students/";
+        return Constants.BASE_URL + url8+course_id+"/"+classroom_id+".json";
+    }
     public static String getperformanceURL(String course_id,String classroom_id) {
         String url1 = "teacher/weeklyStudentsPerf/";
         return Constants.BASE_URL + url1+course_id+"/"+classroom_id+".json";
