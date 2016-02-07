@@ -128,12 +128,12 @@ public class Profile extends AppCompatActivity {
             try {
                 JSONObject jsonObjMain = new JSONObject(jsonString);
                 JSONObject jsonuser = jsonObjMain.getJSONObject(Constants.USER);
-                String namest=jsonuser.getString(Constants.NAME);
+                String namest=jsonuser.getString(Constants.PROFILE_NAME);
                 String emailst=jsonuser.getString(Constants.EMAIL);
                 String phonest=jsonuser.getString(Constants.PHONE);
 
                 JSONObject jsonorg = jsonObjMain.getJSONObject("organization");
-                String schnamest=jsonorg.getString(Constants.NAME);
+                String schnamest=jsonorg.getString(Constants.PROFILE_NAME);
                 String schphonest=jsonorg.getString(Constants.PHONE);
                 name.setText(namest);
                 email.setText("Email :"+emailst);
