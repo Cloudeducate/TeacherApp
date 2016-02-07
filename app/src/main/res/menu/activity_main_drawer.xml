@@ -4,27 +4,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_attendance"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_assignment_ind_grey"
             android:title="Manage Attendance" />
         <item
             android:id="@+id/nav_messages"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_message_grey"
             android:title="Messages" />
         <item
             android:id="@+id/nav_performance"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_assessment_grey"
             android:title="Student Weekly Performance" />
         <item
             android:id="@+id/nav_assignment"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_assignment_grey"
             android:title="Assignments" />
         <item
             android:id="@+id/nav_classes"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_assignment_ind_grey"
             android:title="New Assignment" />
         <item
             android:id="@+id/nav_notify"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_event_note_grey"
             android:title="Send Notification" />
 
     </group>
@@ -33,15 +33,15 @@
         <menu>
             <item
                 android:id="@+id/nav_profile"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_person_grey"
                 android:title="Profile" />
             <item
                 android:id="@+id/nav_feedback"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_send_grey"
                 android:title="Feedback" />
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/ic_arrow_drop_down_circle"
                 android:title="Logout" />
         </menu>
 

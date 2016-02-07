@@ -62,8 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/small_padding"
-                    android:textColor="@color/md_white_1000"
-                    android:background="@drawable/item_top_bg"
+                    android:textColor="@color/md_amber_900"
                     android:text="Assignment"
                    />
 
@@ -74,8 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="@dimen/small_padding"
-                    android:textColor="@color/md_white_1000"
-                    android:background="@drawable/item_top_bg"
+                    android:textColor="@color/md_amber_900"
                     android:text="Performance"
                     />
             </LinearLayout>
