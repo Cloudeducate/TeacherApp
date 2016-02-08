@@ -139,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (error instanceof ParseError) {
                     Log.v(TAG, "Response = " + "ParseError");
                 }
+                progressDialog.dismiss();
                 showErrorDialog();
             }
         }) {

@@ -13,28 +13,29 @@
         <item
             android:id="@+id/nav_performance"
             android:icon="@drawable/ic_assessment_grey"
-            android:title="Student Weekly Performance" />
+            android:title="Submit Result" />
         <item
             android:id="@+id/nav_assignment"
             android:icon="@drawable/ic_assignment_grey"
             android:title="Assignments" />
-        <item
+        <!--<item
             android:id="@+id/nav_classes"
             android:icon="@drawable/ic_assignment_ind_grey"
-            android:title="New Assignment" />
+            android:title="New Assignment" />-->
         <item
             android:id="@+id/nav_notify"
             android:icon="@drawable/ic_event_note_grey"
             android:title="Send Notification" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person_grey"
+            android:title="Profile" />
 
     </group>
 
     <item android:title="Personal">
         <menu>
-            <item
-                android:id="@+id/nav_profile"
-                android:icon="@drawable/ic_person_grey"
-                android:title="Profile" />
+
             <item
                 android:id="@+id/nav_feedback"
                 android:icon="@drawable/ic_send_grey"

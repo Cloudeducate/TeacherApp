@@ -29,8 +29,6 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.cloudeducate.redtick.Adapters.Courses_Adapter;
-import com.cloudeducate.redtick.Adapters.Studentlist_Adapter;
-import com.cloudeducate.redtick.Model.Attendance_model;
 import com.cloudeducate.redtick.R;
 import com.cloudeducate.redtick.Utils.Constants;
 import com.cloudeducate.redtick.Utils.URL1;
@@ -239,11 +237,11 @@ public class MainActivity extends AppCompatActivity
             Intent assignment=new Intent(this,Assignment.class);
             startActivity(assignment);
 
-        } else if (id == R.id.nav_classes) {
+        } /*else if (id == R.id.nav_classes) {
             Intent classes=new Intent(this,Create_Assignment.class);
             startActivity(classes);
 
-        } else if (id == R.id.nav_profile) {
+        }*/ else if (id == R.id.nav_profile) {
             Intent profile=new Intent(this,Profile.class);
             startActivity(profile);
 
