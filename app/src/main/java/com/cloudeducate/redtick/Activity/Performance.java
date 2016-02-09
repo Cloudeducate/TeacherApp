@@ -233,11 +233,11 @@ public class Performance extends AppCompatActivity {
                     attendance_model.setstudentname(jsonObject.getString(Constants.NAME));
                     attendance_model.setrollno(jsonObject.getString(Constants.ROLLNO));
                     attendance_model.setuserid(jsonObject.getString(Constants.USER_ID));
-                    if(jsonObject.getString(Constants.GRADE)=="null")
+                    if((jsonObject.getString(Constants.GRADE)).equals("null"))
                         attendance_model.setGradevalue(10);
                     else
                         attendance_model.setGradevalue(jsonObject.getInt(Constants.GRADE));
-                    Log.v(TAG, "test = " + String.valueOf(jsonObject.getString(Constants.NAME)+String.valueOf(jsonObject.getInt(Constants.GRADE))));
+
 
                     resultList.add(attendance_model);
 

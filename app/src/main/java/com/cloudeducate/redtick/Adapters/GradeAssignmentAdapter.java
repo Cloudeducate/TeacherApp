@@ -51,7 +51,6 @@ public class GradeAssignmentAdapter extends RecyclerView.Adapter<GradeAssignment
         holder.studentname.setText(list.get(position).getstudentname());
         holder.rollnoview.setText("Rollno." + list.get(position).getrollno());
         holder.remark.setText(list.get(position).getstudentremark());
-
         Log.v("MyApp", Integer.toString(list.get(position).getAttendancevalue()));
         String value[]=new String[]{"0","1","2","3","4","5"};
         adapter = new ArrayAdapter(context,
