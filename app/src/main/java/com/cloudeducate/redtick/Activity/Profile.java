@@ -4,13 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -30,16 +27,13 @@ import com.cloudeducate.redtick.Utils.Constants;
 import com.cloudeducate.redtick.Utils.URL1;
 import com.cloudeducate.redtick.Volley.VolleySingleton;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Profile extends AppCompatActivity {
 
@@ -123,7 +117,7 @@ public class Profile extends AppCompatActivity {
             school = (TextView) findViewById(R.id.organisation);
             schphone = (TextView) findViewById(R.id.phoneno);
             rollno = (TextView) findViewById(R.id.rollno);
-            courses = (TextView) findViewById(R.id.subjects);
+            ///courses = (TextView) findViewById(R.id.subjects);
 
             try {
                 JSONObject jsonObjMain = new JSONObject(jsonString);
