@@ -6,4 +6,15 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Red Tick</string>
+    <string name="title_activity_manage__attendance">Manage Attendance</string>
+    <string name="title_activity_assignment">Assignment</string>
+    <string name="title_activity_performance">Performance</string>
+    <string name="title_activity_classes">Classes</string>
+    <string name="title_activity_messages">Messages</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_create__assignment">Create Assignment</string>
+    <string name="title_activity_grade__assignment">Grade Assignment</string>
+    <string name="title_activity_view__conversation">View_Conversation</string>
+    <string name="title_activity_create__conversation">Create_Conversation</string>
+    <string name="title_activity_send__notification">Send_Notification</string>
 </resources>

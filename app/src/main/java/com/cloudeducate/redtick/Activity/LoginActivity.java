@@ -28,10 +28,9 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.cloudeducate.redtick.MainActivity;
 import com.cloudeducate.redtick.R;
 import com.cloudeducate.redtick.Utils.Constants;
-import com.cloudeducate.redtick.Utils.URL;
+import com.cloudeducate.redtick.Utils.URL1;
 import com.cloudeducate.redtick.Volley.VolleySingleton;
 
 import org.json.JSONException;
@@ -47,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText username, password;
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
+    private SharedPreferences sharedpref;
     private ProgressDialog progressDialog;
     private AlertDialog alertDialog;
     private Button login;
@@ -84,10 +84,30 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
-
+                loginRequest();
             }
         });
+    }
+    @Override
+    public void onResume(){
+        sharedpref = this.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+        if(sharedpref.contains(Constants.USERNNAME))
+        {
+            if (sharedpref.contains(Constants.PASSWORD)) {
+                Intent dashboard = new Intent(this, MainActivity.class);
+                startActivity(dashboard);
+            }
 
+        }
+        super.onResume();
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if ((progressDialog != null) && progressDialog.isShowing())
+            progressDialog.dismiss();
+        progressDialog = null;
     }
 
     private void loginRequest() {
@@ -95,10 +115,10 @@ public class LoginActivity extends AppCompatActivity {
         volleySingleton = VolleySingleton.getMyInstance();
         requestQueue = volleySingleton.getRequestQueue();
         showProgressDialog();
-        StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, URL.getTeacherLoginURL(), new Response.Listener<String>() {
+        StringRequest jsonObjectRequest = new StringRequest(Request.Method.POST, URL1.getTeacherLoginURL(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
                 if (response == null) {
                     Log.v(TAG, "fetchData is not giving a fuck");
                 }
@@ -119,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else if (error instanceof ParseError) {
                     Log.v(TAG, "Response = " + "ParseError");
                 }
+                progressDialog.dismiss();
                 showErrorDialog();
             }
         }) {
@@ -153,12 +174,15 @@ public class LoginActivity extends AppCompatActivity {
                 // Creating JSONArray from JSONObject
                 JSONObject jsonmeta = jsonObjMain.getJSONObject(Constants.META);
                 String metavalue = jsonmeta.getString(Constants.METAVALUE);
+                Log.v(TAG,metavalue+"metavalue in login");
                 if (metavalue != null) {
                     Bundle json = new Bundle();
                     json.putString(Constants.KEY, jsonString);
 
-                    SharedPreferences sharedpref = this.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
+                   sharedpref = this.getSharedPreferences(Constants.PREFERENCE_KEY, Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedpref.edit();
+                    editor.putString(Constants.USERNNAME,usernameWrapper.getEditText().getText().toString());
+                    editor.putString(Constants.PASSWORD, passwordWrapper.getEditText().getText().toString());
                     editor.putString(Constants.METAKEY, metavalue);
                     editor.commit();
 

@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Username"
                     android:inputType="textEmailAddress"
-                    android:text="faizanayubi"/>
+                    android:text=""/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:text="password"/>
+                    android:text=""/>
 
             </android.support.design.widget.TextInputLayout>
 
